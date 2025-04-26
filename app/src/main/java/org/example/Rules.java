@@ -17,16 +17,16 @@ public class Rules {
             board.printBoard(layoutBoard);
             System.out.println("Player X wins! The current log is:");
             PrintScore.playerXWinCounter++;
-            playerXPlaysNext = false;
+            playerXPlaysNext = true;
             PrintScore.winAndTieCountDisplay();
             return true;
         }
 
         if (hasContestantWon(layoutBoard, "  O  ")) {
             board.printBoard(layoutBoard);
-            System.out.println("Player O wins!");
+            System.out.println("Player O wins! The current log is:");
             PrintScore.playerOWinCounter++;
-            playerXPlaysNext = true;
+            playerXPlaysNext = false;
             PrintScore.winAndTieCountDisplay();
             return true;
         }
@@ -45,7 +45,9 @@ public class Rules {
         PrintScore.winAndTieCountDisplay();
         return true;
     }
-
+static public void setPlayerXPlaysNext(boolean inBool){
+        playerXPlaysNext = inBool;
+}
 
     public boolean hasContestantWon(String[][] board, String symbol) {
         return (Objects.equals(board[0][0], symbol) && Objects.equals(board[0][1], symbol) && Objects.equals(board[0][2], symbol)) || (Objects.equals(board[1][0], symbol) && Objects.equals(board[1][1], symbol) && Objects.equals(board[1][2], symbol)) || (Objects.equals(board[2][0], symbol) && Objects.equals(board[2][1], symbol) && Objects.equals(board[2][2], symbol)) ||
@@ -54,5 +56,4 @@ public class Rules {
 
                 (Objects.equals(board[0][0], symbol) && Objects.equals(board[1][1], symbol) && Objects.equals(board[2][2], symbol)) || (Objects.equals(board[0][2], symbol) && Objects.equals(board[1][1], symbol) && Objects.equals(board[2][0], symbol));
     }
-
 }

@@ -11,7 +11,6 @@ public class PlayAgain {
             System.out.print("Please enter 'yes' or 'no': ");
             String userInput = scanner.nextLine().trim().toLowerCase();
             if (userInput.equals("yes")) {
-                System.out.println("\nGreat! This time " + (Rules.playerXPlaysNext ? "X" : "O") + " will go first!");
                 return true;
             } else if (userInput.equals("no")) {
                 return false;

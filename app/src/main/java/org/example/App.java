@@ -3,15 +3,17 @@ package org.example;
 public class App {
 
     public static void main(String[] args) {
-        System.out.println("Welcome!\nI Hope You Have Lots of Fun Playing Tic-Tac-Toe!\n");
+        System.out.println("\nWelcome!\nI Hope You Have Lots of Fun Playing Tic-Tac-Toe!");
         boolean playAgainValue = true;
         while (playAgainValue) {
             String[][] boardSetup = new String[][]{{"  1  ", "  2  ", "  3  "}, {"  4  ", "  5  ", "  6  "}, {"  7  ", "  8  ", "  9  "}};
             Board board = new Board(boardSetup);
             Rules rules = new Rules(boardSetup, board);
-            Player player1 = new Human(boardSetup, "  X  ", board);
-            Player player2 = new Human(boardSetup, "  O  ", board);
-            TTT ttt = new TTT(board, player1, player2, rules, boardSetup);
+            Player humanX = new Human(boardSetup, "  X  ", board);
+            Player humanO = new Human(boardSetup, "  O  ", board);
+            Player computerX = new ComputerPlayer(boardSetup, "  X  ", board, rules);
+            Player computerO = new ComputerPlayer(boardSetup, "  O  ", board, rules);
+            TTT ttt = new TTT(board, humanX, humanO,computerX,computerO, rules, boardSetup);
             ttt.startGame();
             playAgainValue = PlayAgain.checkYesNo();
         }
